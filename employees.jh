@@ -1,0 +1,623 @@
+#font: Times
+#fontSize: 10
+#spacing: 12
+#padding: 3 
+NAME_MAX_LENGTH = 200
+TEXT_MAX_LENGTH = 2000
+CODE_MAX_LENGTH = 50
+NOTE_MAX_LENGTH = 4
+entity UserGroup {	
+    userGroupName String maxlength(NAME_MAX_LENGTH)
+    description String    
+}
+
+entity UserLog {
+	UserId Integer
+	Action String maxlength(NOTE_MAX_LENGTH)
+    loggedIpAddress String maxlength(CODE_MAX_LENGTH)
+    loggedMachine String maxlength(NAME_MAX_LENGTH) required
+    loggedDate LocalDate
+}
+
+entity SystemLog {
+	Action String maxlength(NOTE_MAX_LENGTH)
+    OldData String
+    NewData String
+}
+
+entity RoleGroup {
+	roleGroupName String maxlength(NAME_MAX_LENGTH) required
+    roleGroupNameEn String maxlength(NAME_MAX_LENGTH)
+    description String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Role {
+	roleName String maxlength(NAME_MAX_LENGTH) required
+    roleNameEn String maxlength(NAME_MAX_LENGTH)
+    description String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Func {
+	functionName String maxlength(NAME_MAX_LENGTH) required
+    functionNameEn String maxlength(NAME_MAX_LENGTH)
+    functionLink String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity FuncGroup {
+	functionGroupName String maxlength(NAME_MAX_LENGTH) required
+    functionGroupNameEn String maxlength(NAME_MAX_LENGTH)    
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity Menu {
+	menuCaption String maxlength(NAME_MAX_LENGTH) required
+    menuCaptionEn String maxlength(NAME_MAX_LENGTH)    
+    menuIcon String maxlength(CODE_MAX_LENGTH)
+    description String maxlength(NOTE_MAX_LENGTH) 
+    enable Integer
+}
+
+entity DataTable{
+	tableName String maxlength(NAME_MAX_LENGTH) required
+    tableNameEn String maxlength(NAME_MAX_LENGTH)    
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity DataGroup {
+	dataGroupName String maxlength(NAME_MAX_LENGTH) required
+    dataGroupNameEn String maxlength(NAME_MAX_LENGTH)    
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity Province {
+	abbreviation String maxlength(CODE_MAX_LENGTH) required
+    name String maxlength(NAME_MAX_LENGTH) required
+    fullName String maxlength(NAME_MAX_LENGTH)
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity District {	
+    name String maxlength(NAME_MAX_LENGTH) required
+    fullName String maxlength(NAME_MAX_LENGTH)
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity Commune {	
+    name String maxlength(NAME_MAX_LENGTH) required
+    fullName String maxlength(NAME_MAX_LENGTH)
+    description String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity Hospital {
+	hospitalCode String maxlength(CODE_MAX_LENGTH) required
+    hospitalName String maxlength(NAME_MAX_LENGTH) required    
+    fullName String maxlength(NAME_MAX_LENGTH)
+    hospitalClass Integer    
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer    
+}
+
+entity MeasurementUnit(MU) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity Manufacture {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity BidderSelector(BidderSel) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity BiddingMethod(BdgMthd) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity ContractForm {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity ContractForm(CtrFr) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity ExpenditureGroup(ExpGr) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity ExpenditureSubGroup(ExpSubGr) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity Expenditure(Exp) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity ExpenditureFrame(ExpFr) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    promulgateTime LocalDate
+    total BigDecimal
+    status Integer
+}
+
+entity ExpenditureDetails(ExpDtl) {
+	amount BigDecimal min(0)
+    price BigDecimal min(0)
+    deviationStandard BigDecimal
+    description String maxlength(NOTE_MAX_LENGTH)     
+    status Integer
+}
+
+entity HosExpenditure(HosExp) {
+	orderNo Integer min(0)
+    updateTime LocalDate
+    status Integer
+}
+
+entity HosExpenditureDetails(HosExpDtl) {
+	amount BigDecimal min(0)
+    price BigDecimal min(0)
+    deviationStandard BigDecimal
+    description String maxlength(NOTE_MAX_LENGTH)     
+    status Integer
+}
+
+entity MedicalServiceChapter(MdcSvCh) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity MedicalServiceGroup(MdcSvGr) {
+	name String maxlength(NAME_MAX_LENGTH) required
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity MedicalService(MdcSv) {
+	code String maxlength(CODE_MAX_LENGTH) required
+    name String maxlength(NAME_MAX_LENGTH) required
+    globalCode String maxlength(CODE_MAX_LENGTH)
+    managerCode String maxlength(CODE_MAX_LENGTH)    
+    resolutionNo String maxlength(CODE_MAX_LENGTH)
+    resolutionDate LocalDate
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity ShoppingPlan(SpgPlan) {
+	planPeriod String required
+    planDate LocalDate
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer 
+}
+
+entity ShoppingPlanDetails(SpgPlanDtl) {
+	amount BigDecimal min(0)
+    note String maxlength(NOTE_MAX_LENGTH)     
+    status Integer
+}
+
+entity BiddingPlan(BdgPlan) {
+	planPeriod String required
+    planDate LocalDate
+    expireDate LocalDate
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity BiddingPlanDetails(BdgPlanDtl) {
+	amount BigDecimal min(0)
+    minPrice BigDecimal min(0)
+    maxPrice BigDecimal max(0)    
+    deliveryTime LocalDate
+    note String maxlength(NOTE_MAX_LENGTH)     
+    status Integer
+}
+
+entity Bidding(Bdg) {
+	startDate LocalDate
+    endDate LocalDate    
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity BiddingDetails(BdgDtl) {
+	amount BigDecimal min(0)
+    minPrice BigDecimal min(0)
+    maxPrice BigDecimal max(0)    
+    deliveryTime LocalDate
+    note String maxlength(NOTE_MAX_LENGTH)     
+    status Integer
+}
+
+entity Bid {
+	bidderName String maxlength(NAME_MAX_LENGTH) required
+    bidderEmail String maxlength(NAME_MAX_LENGTH)
+    bidfderPhone String maxlength(NAME_MAX_LENGTH)
+    bidderAddress String maxlength(NOTE_MAX_LENGTH)
+    capacityProfile Blob
+    description String maxlength(NOTE_MAX_LENGTH) 
+    status Integer
+}
+
+entity BidDetails(BidDtl) {
+	amount BigDecimal min(0)
+    minPrice BigDecimal min(0)
+    maxPrice BigDecimal max(0)    
+    deliveryTime LocalDate
+    note String maxlength(NOTE_MAX_LENGTH)     
+    status Integer
+}
+
+entity MedicalService21(MdcSv21) {
+	name String maxlength(NOTE_MAX_LENGTH)
+    groupId Integer
+    central String maxlength(CODE_MAX_LENGTH)
+    province String maxlength(CODE_MAX_LENGTH)
+    district String maxlength(CODE_MAX_LENGTH)
+    ward String maxlength(CODE_MAX_LENGTH)
+    code String maxlength(CODE_MAX_LENGTH)
+    surgeryCategory String maxlength(NAME_MAX_LENGTH)
+    hospitalLevel String maxlength(CODE_MAX_LENGTH)
+    status String maxlength(CODE_MAX_LENGTH)
+    serviceCategory String maxlength(NAME_MAX_LENGTH)
+    furtherNote String maxlength(NOTE_MAX_LENGTH)
+    ma5084 String maxlength(NAME_MAX_LENGTH)
+    maChuong String maxlength(NAME_MAX_LENGTH)
+    stt String maxlength(CODE_MAX_LENGTH)
+    stt2 String maxlength(CODE_MAX_LENGTH)
+}
+
+entity MedicalService13(MdcSv13) {
+	code String maxlength(NAME_MAX_LENGTH)   
+    code0304 String maxlength(NAME_MAX_LENGTH)
+    name String maxlength(NOTE_MAX_LENGTH)
+    price3 BigDecimal
+    price3Old BigDecimal
+    price7 BigDecimal
+    priceTt02 BigDecimal
+    insuranceCode String maxlength(NAME_MAX_LENGTH)
+    stt String maxlength(CODE_MAX_LENGTH)
+    stt37 String maxlength(CODE_MAX_LENGTH)
+    stt15 String maxlength(CODE_MAX_LENGTH)
+    stt02 String maxlength(NAME_MAX_LENGTH)
+    ghiChu String maxlength(NOTE_MAX_LENGTH)
+    ghiChu37 String maxlength(NOTE_MAX_LENGTH)
+    ghiChuTt02 String maxlength(NOTE_MAX_LENGTH)
+    maNhom String maxlength(NAME_MAX_LENGTH)
+    nhom15 String maxlength(NAME_MAX_LENGTH)
+    chuyenKhoa15 String maxlength(NAME_MAX_LENGTH)
+    maBhyt37 String maxlength(NAME_MAX_LENGTH)
+    maBhyt15 String maxlength(NAME_MAX_LENGTH)
+    noiDungDieuChinh String maxlength(NAME_MAX_LENGTH)
+    thayDoiGiaYn String maxlength(NAME_MAX_LENGTH)
+    thayDoiGhiChuYn String maxlength(NAME_MAX_LENGTH)
+    thayDoiGiaHoacGhiChuYn String maxlength(NAME_MAX_LENGTH)
+    sttTtbhytNew Integer
+    giaTtbhytNew BigDecimal
+    ghiChuTtBhytNew String maxlength(NOTE_MAX_LENGTH)
+    thayGhiChuTtbhytNew String maxlength(NAME_MAX_LENGTH)
+    thayGiaTtBhytNew BigDecimal
+    sttTtdvNew Integer
+    giaTtdvNew BigDecimal
+    ghiChuTtdvNew String maxlength(NOTE_MAX_LENGTH)
+    thayGhiChuTtdvNew String maxlength(NAME_MAX_LENGTH)
+    thayGiaTtdvNew BigDecimal
+}
+
+entity MedicalServiceEquivalent  (MdcSvEq) {
+	code String maxlength(NAME_MAX_LENGTH)
+    service0304 Integer
+    service43 Integer
+    service37 Integer
+    stt50 String maxlength(CODE_MAX_LENGTH)
+    stt37 String maxlength(CODE_MAX_LENGTH)
+    ma5084 String maxlength(NAME_MAX_LENGTH)
+    soQuyetDinhOld String maxlength(NAME_MAX_LENGTH)
+    ngayKyOld LocalDate
+    soQuyetDinh String maxlength(NAME_MAX_LENGTH)
+    ghiChu String maxlength(NOTE_MAX_LENGTH)
+    ngayKy LocalDate
+}
+
+entity Icd9 {
+	chapterCode String maxlength(NAME_MAX_LENGTH)
+    chapterName String maxlength(CODE_MAX_LENGTH)
+    group String maxlength(CODE_MAX_LENGTH)
+	code String maxlength(CODE_MAX_LENGTH) required
+    name String maxlength(NAME_MAX_LENGTH)
+    include String maxlength(NOTE_MAX_LENGTH)
+    exclude String maxlength(NOTE_MAX_LENGTH)
+    definition String maxlength(NOTE_MAX_LENGTH)    
+}
+
+entity Icd9Chapter (Icd9Ch) {
+	maChuong String maxlength(CODE_MAX_LENGTH)
+    tenChuong String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Icd9Group (Icd9Gr) {
+	maNhom String maxlength(CODE_MAX_LENGTH)
+    tenNhom String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Icd9SubGroup (Icd9SubGr) {
+	maNhomPhu String maxlength(CODE_MAX_LENGTH)
+    tenNhomPhu String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity DmIcd9 {	
+    ma String maxlength(NAME_MAX_LENGTH)
+    ten String maxlength(NAME_MAX_LENGTH)
+    tenEn String maxlength(NAME_MAX_LENGTH)
+    baoGom String maxlength(NOTE_MAX_LENGTH)
+    baoGomEn String maxlength(NOTE_MAX_LENGTH)
+    loaiTru String maxlength(NOTE_MAX_LENGTH)
+    loaiTruEn String maxlength(NOTE_MAX_LENGTH)
+    thuatNgu String maxlength(NOTE_MAX_LENGTH)
+    dinhNghia String maxlength(NOTE_MAX_LENGTH) 
+}
+
+entity Icd10Chapter (Icd10Ch) {
+	maChuong String maxlength(CODE_MAX_LENGTH)
+    tenChuong String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Icd10Group (Icd10Gr) {
+	maNhom String maxlength(CODE_MAX_LENGTH)
+    tenNhom String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Icd10SubGroup1 (Icd10SubGr1) {
+	maNhomPhu String maxlength(CODE_MAX_LENGTH)
+    tenNhomPhu String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Icd10SubGroup2 (Icd10SubGr1) {
+	maNhomPhu String maxlength(CODE_MAX_LENGTH)
+    tenNhomPhu String maxlength(NAME_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity Icd10Type {
+	maLoai String maxlength(CODE_MAX_LENGTH)
+    tenLoai String maxlength(TEXT_MAX_LENGTH)
+    moTa String maxlength(NOTE_MAX_LENGTH)
+}
+
+
+entity DmIcd10 {	
+    ma String maxlength(NAME_MAX_LENGTH)
+    ten String maxlength(TEXT_MAX_LENGTH)
+    tenEn String maxlength(TEXT_MAX_LENGTH)
+    baoGom String maxlength(NOTE_MAX_LENGTH)
+    baoGomEn String maxlength(NOTE_MAX_LENGTH)
+    loaiTru String maxlength(NOTE_MAX_LENGTH)
+    loaiTruEn String maxlength(NOTE_MAX_LENGTH)
+    thuatNgu String maxlength(NOTE_MAX_LENGTH)
+    dinhNghia String maxlength(NOTE_MAX_LENGTH) 
+}
+
+
+entity MedicalServiceMapping (MdcSvMp) {	
+    equivalentCode String maxlength(CODE_MAX_LENGTH) required    
+    mappingUser Integer
+    mappingNote String maxlength(NOTE_MAX_LENGTH)
+    mappingDate LocalDate
+}
+
+entity MedicalServiceIcd9 (MdcSvIcd9) {
+	icd9Code String maxlength(CODE_MAX_LENGTH) required
+    icd9Name String maxlength(NAME_MAX_LENGTH)
+    icd9Chapter String maxlength(NAME_MAX_LENGTH)
+}
+
+entity MedicalServiceMappingFull (MdcSvMpFull) {
+  maCk21                       String
+  chuyenKhoa21                 String required
+  maTuongDuong                 String
+  ten21                        String
+  phanTuyen                    String
+  phanLoai                     String
+  icd9Code                     String
+  icd9Name                     String
+  icd9Chapter                  String
+  icd9ChapterId                Integer
+  stt15                        Integer
+  stt37                        String
+  stt02                        String
+  ten13                        String
+  maLtbhyt                     String
+  giaTt15                      String
+  ghiChuTt15                   String
+  ghiChuPhuLucTt15             String
+  giaTt37                      Integer
+  giaTt37Dv                    Integer
+  ghiChu37                     String
+  priceTt02                    Integer
+  ghiChuTt02                   String
+  chuyenKhoa15                 String
+  soQuyetDinh                  String
+  ngayKy                       LocalDate
+  ngayKyOld                    LocalDate
+  mappingDate                  LocalDate
+}
+
+entity SurveyBatch {
+	code	String
+    name	String
+    startDate	LocalDate
+    endDate	LocalDate
+    docNo	String
+    docContent	String
+    status	Integer
+}
+
+entity Survey {
+	code	String
+    name	String
+    startDate	LocalDate
+    endDate	LocalDate
+    colNum	Integer
+    guide	String
+    form	String
+    desc	String maxlength(NOTE_MAX_LENGTH)
+    note    String maxlength(NOTE_MAX_LENGTH) 
+    status	Integer
+}
+
+entity SurveyConfig {
+	colIndex	Integer
+    colName	String    
+}
+
+entity SurveyDetails {
+	rowIndex	Integer
+    rowList	String
+    rowName	String
+    autoSumary Integer
+    note	String maxlength(NOTE_MAX_LENGTH)
+}
+
+entity HosSurvey {
+	fillForm	String
+    scanForm	String
+    status	Integer
+}
+
+entity HosSurveyDetails(HosSvyDtl) {
+	name	String
+    data1	String
+    data2	String
+    data3	String
+    data4	String
+    data5	String
+    data6	String
+    data7	String
+    data8	String
+    data9	String
+    data10	String
+    data11	String
+    data12	String
+    data13	String
+    data14	String
+    data15	String
+    data16	String
+    data17	String
+    data18	String
+    data19	String
+    data20	String
+    note	String maxlength(NOTE_MAX_LENGTH)
+}
+
+relationship OneToMany {	
+    UserLog to SystemLog
+    Hospital to User
+    Func to SystemLog
+    RoleGroup  to Role
+    FuncGroup to Func
+    DataGroup to DataTable
+    Menu to Menu {parentId}
+    Func to Menu
+    //
+    Province to District
+    District to Commune
+    Province to Hospital
+    District to Hospital
+    Commune to Hospital
+    Hospital to ShoppingPlan
+    MedicalServiceChapter to MedicalServiceGroup
+    MedicalServiceGroup to MedicalService    
+    ExpenditureGroup  to ExpenditureSubGroup 
+    ExpenditureSubGroup to Expenditure     
+    ExpenditureFrame to ExpenditureDetails
+    MeasurementUnit to ExpenditureDetails 
+    ExpenditureFrame  to HosExpenditure
+    HosExpenditure to HosExpenditureDetails
+    ExpenditureDetails  to HosExpenditureDetails
+    MeasurementUnit  to HosExpenditureDetails
+    Expenditure to ExpenditureDetails
+    Expenditure to HosExpenditureDetails
+    ShoppingPlan to ShoppingPlanDetails
+    Expenditure to  ShoppingPlanDetails
+    ShoppingPlan to BiddingPlan
+    BiddingPlan to BiddingPlanDetails  
+    Expenditure to  BiddingPlanDetails
+    BidderSelector to Bidding
+    BiddingMethod to Bidding
+    ContractForm to Bidding
+    Bidding to BiddingDetails
+    Expenditure to BiddingDetails
+    Manufacture to BiddingDetails
+    Bidding to Bid
+    Bid to BidDetails
+    BiddingDetails to BidDetails
+    MedicalServiceMapping to MedicalServiceIcd9
+    Icd9Chapter to MedicalServiceIcd9
+    Icd9Chapter to DmIcd9
+    Icd9Group to DmIcd9
+    Icd9SubGroup to DmIcd9
+    Icd9Chapter to Icd9Group
+    Icd9Group to Icd9SubGroup
+    Icd10Chapter to Icd10Type
+    Icd10Group to Icd10Type
+    Icd10SubGroup1 to Icd10Type
+    Icd10SubGroup2 to Icd10Type
+    Icd10Type to DmIcd10
+    Icd10Chapter to Icd10Group
+    Icd10Group to Icd10SubGroup1
+    Icd10SubGroup1 to Icd10SubGroup2
+    //
+    SurveyBatch to Survey        
+    Survey to SurveyConfig
+    Survey to SurveyDetails
+    SurveyDetails to SurveyDetails {parent}
+    Survey to HosSurvey
+    Hospital to HosSurvey
+    HosSurvey to HosSurveyDetail
+    SurveyDetails to HosSurveyDetails
+   HosSurveyDetails to HosSurveyDetails{parent}
+}
+
+relationship OneToOne {
+	BiddingPlan to Bidding
+    MedicalService  to ExpenditureFrame    
+}
+
+relationship ManyToMany {	
+	FuncGroup to Role
+    Func to Role
+    DataGroup to Role
+    DataTable to Role
+}
+
+paginate * with pagination
+service * with serviceClass
+filter *
